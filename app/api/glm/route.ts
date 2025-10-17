@@ -11,10 +11,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GLM_API_KEY;
+    const apiKey = process.env.ZAI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'GLM API key not configured' },
+        { error: 'ZAI API key not configured' },
         { status: 500 }
       );
     }
