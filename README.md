@@ -21,7 +21,7 @@ Create beautiful, responsive landing pages with AI in seconds. Simply describe w
 
 - **Next.js 15** - React framework with App Router
 - **Mantine** - Modern React components
-- **GLM-4.6** - Advanced AI model for code generation
+- **GLM-4.5** - Advanced AI model for code generation
 - **TypeScript** - Type-safe development
 
 ## Getting Started
