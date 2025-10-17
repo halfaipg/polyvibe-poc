@@ -33,7 +33,6 @@ export function PreviewPanel({ html, onReset, isGenerating = false, hideHeader =
   // Update streaming code directly (no accumulation needed)
   useEffect(() => {
     if (streamingCode) {
-      console.log('PreviewPanel received content length:', streamingCode.length);
       setAccumulatedStreamingCode(streamingCode);
     }
   }, [streamingCode]);
@@ -477,18 +476,6 @@ READY FOR USER INPUT.
     return () => clearInterval(interval);
   }, [isGenerating]);
 
-  // Debug accumulated code
-  useEffect(() => {
-    console.log('Accumulated streaming code length:', accumulatedStreamingCode.length);
-    if (accumulatedStreamingCode.length > 0) {
-      console.log('First 100 chars:', accumulatedStreamingCode.substring(0, 100));
-    }
-  }, [accumulatedStreamingCode]);
-
-  // Test function to add some code
-  const addTestCode = () => {
-    setAccumulatedStreamingCode(prev => prev + '<div>Test code added!</div>\n');
-  };
 
   // Edit mode functions
   const enterEditMode = () => {
@@ -727,15 +714,6 @@ READY FOR USER INPUT.
                   <Text size="sm" c="white" ta="center" style={{ opacity: 0.7 }}>
                     This may take a few moments...
                   </Text>
-                  <Button 
-                    size="xs" 
-                    variant="outline" 
-                    color="white" 
-                    onClick={addTestCode}
-                    style={{ marginTop: '1rem' }}
-                  >
-                    Test Code Display
-                  </Button>
                 </Stack>
               </Stack>
             </Box>
