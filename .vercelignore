@@ -1,0 +1,30 @@
+# Exclude CLI and backend files
+../cli
+../cline-repo
+../qwen-code-fresh
+../*.md
+../.cursor
+../.qwen
+../.gitignore
+
+# Exclude development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Exclude build artifacts
+.next
+out
+dist
+build
+
+# Exclude logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Exclude OS files
+.DS_Store
+Thumbs.db
