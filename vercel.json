@@ -5,8 +5,5 @@
       "src": "package.json",
       "use": "@vercel/next"
     }
-  ],
-  "env": {
-    "GLM_API_KEY": "@glm_api_key"
-  }
+  ]
 }
