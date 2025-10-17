@@ -725,58 +725,92 @@ READY FOR USER INPUT.
               }
             `}</style>
           </Box>
-        ) : isUpdating ? (
-          <Box style={{ height: '100%', position: 'relative' }}>
-            {/* Show current page with update overlay */}
-            <iframe
-              ref={iframeRef}
-              title="Landing Page Preview"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-              style={{
-                width: '100%',
-                height: '100%',
-                border: 'none',
-                borderRadius: '0 0 8px 8px',
-              }}
-              srcDoc={html}
-            />
-            
-            {/* Update overlay */}
-            <Box
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'rgba(0, 0, 0, 0.4)',
-                backdropFilter: 'blur(3px)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
-              }}
-            >
-              <Stack align="center" gap="md">
+            ) : isUpdating ? (
+              <Box
+                style={{
+                  height: '100%',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                }}
+              >
+                {/* Streaming Code Background for Updates */}
+                <Box
+                  ref={codeRef}
+                  component="pre"
+                  style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, margin: 0, padding: '1rem',
+                    fontSize: '0.75rem', lineHeight: 1.2, color: '#00ff00', fontFamily: 'Monaco, Consolas, "Courier New", monospace',
+                    opacity: 0.9, overflow: 'auto', background: 'rgba(0, 0, 0, 0.8)', backdropFilter: 'none', zIndex: 1,
+                    whiteSpace: 'pre-wrap', wordBreak: 'break-word', width: '100%', height: '100%',
+                  }}
+                >
+                  <code>
+                    {accumulatedStreamingCode || `╔══════════════════════════════════════════════════════════════╗
+║                    AI LANDING PAGE EDITOR                        ║
+║                        UPDATE MODE ACTIVE                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+[SYSTEM] Analyzing current page structure...
+[SYSTEM] Identifying elements to modify...
+[SYSTEM] Preparing update sequence...
+[SYSTEM] Connecting to GLM-4.5 API...
+
+[AI] Processing edit request...
+[AI] Parsing user instructions...
+[AI] Locating target elements...
+[AI] Generating updated code...
+[AI] Validating changes...
+
+[UPDATE] Applying modifications...
+[UPDATE] Preserving existing structure...
+[UPDATE] Integrating new elements...
+[UPDATE] Testing compatibility...
+
+READY FOR STREAMING UPDATES.
+
+> _`}
+                  </code>
+                </Box>
+                
+                {/* Glass Effect Overlay */}
                 <Box
                   style={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: '50%',
-                    border: '3px solid rgba(255, 255, 255, 0.3)',
-                    borderTop: '3px solid #00ff00',
-                    animation: 'spin 1s linear infinite',
+                    position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                    background: 'rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(1px)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', zIndex: 2,
                   }}
-                />
-                <Text size="lg" fw={600} c="white" ta="center">
-                  Updating your page...
-                </Text>
-                <Text size="sm" c="rgba(255, 255, 255, 0.8)" ta="center">
-                  Making the requested changes
-                </Text>
-              </Stack>
-            </Box>
-          </Box>
+                >
+                  <Stack align="center" gap="md">
+                    <Box
+                      style={{
+                        width: 60,
+                        height: 60,
+                        borderRadius: '50%',
+                        border: '4px solid rgba(255, 255, 255, 0.3)',
+                        borderTop: '4px solid #00ff00',
+                        animation: 'spin 1s linear infinite',
+                      }}
+                    />
+                    <Text size="xl" fw={700} c="white" ta="center">
+                      Updating Your Page
+                    </Text>
+                    <Text size="lg" c="white" ta="center" style={{ opacity: 0.9 }}>
+                      Applying your changes...
+                    </Text>
+                    <Text size="sm" c="white" ta="center" style={{ opacity: 0.7 }}>
+                      This may take a moment
+                    </Text>
+                  </Stack>
+                </Box>
+                
+                <style jsx>{`
+                  @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                  }
+                `}</style>
+              </Box>
         ) : previewChange ? (
           <Box style={{ height: '100%', position: 'relative' }}>
             {/* Show preview of the change */}
