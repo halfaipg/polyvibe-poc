@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'glm-4.5-airx',
+        model: 'glm-4.6',
         messages: messages,
         stream: true,
         max_tokens: 8192,
